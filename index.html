@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport-fit=cover: background extends under notches / home indicators, no gaps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="RHU portal — clinic staff appointments and queue board." />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#dcecdb" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070c0a" />
+    <!-- Decorative login watermark (61KB). Preloaded so it paints with first frame,
+         explicit dimensions in the <img> (width/height 1254) avoid layout shift. -->
+    <link rel="preload" as="image" href="/background.jpg" fetchpriority="low" />
+    <link rel="icon" type="image/jpeg" href="/rhu.jpg" />
+    <title>Medical Appointment</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

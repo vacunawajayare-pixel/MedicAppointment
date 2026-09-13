@@ -1,0 +1,295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#dde7da] text-[#122e1e];
+}
+.input {
+  @apply w-full rounded border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4ea895];
+}
+.btn {
+  @apply rounded px-4 py-2 text-sm font-medium transition-colors;
+}
+.btn-primary {
+  @apply btn bg-[#0e4a3a] text-white hover:bg-[#0a3a23] disabled:opacity-50;
+}
+.btn-secondary {
+  @apply btn bg-[#cde6cf] text-[#123524] hover:bg-[#aecfb2] disabled:opacity-50;
+}
+.btn-danger {
+  @apply btn bg-red-600 text-white hover:bg-red-700 disabled:opacity-50;
+}
+.card {
+  @apply rounded-lg bg-[#fdfbe7] p-4 shadow;
+}
+.badge {
+  @apply inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold;
+}
+
+/* Staff dark theme: deep-green canvas, panels, controls */
+.staff-dark {
+  @apply min-h-screen bg-[#070c0a] text-slate-100;
+  color-scheme: dark;
+}
+.dk-panel {
+  @apply rounded-xl border border-white/5 bg-[#101815] p-4;
+}
+.dk-input {
+  @apply w-full rounded-lg border border-white/10 bg-[#16281f] px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#4ea895];
+}
+.dk-input option {
+  background-color: #16281f;
+}
+.dk-btn-primary {
+  @apply rounded-lg bg-[#0e4a3a] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0a3a23] disabled:opacity-50;
+}
+.dk-btn-ghost {
+  @apply rounded-lg border border-white/15 px-4 py-2 text-sm text-slate-200 transition-colors hover:bg-white/5 disabled:opacity-50;
+}
+.dk-btn-danger {
+  @apply rounded-lg bg-red-600/90 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-500 disabled:opacity-50;
+}
+.dk-btn-amber {
+  @apply rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-black transition-colors hover:bg-amber-300 disabled:opacity-50;
+}
+.dk-pill {
+  @apply inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold;
+}
+.dk-step {
+  @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0e4a3a] text-xs font-bold text-white;
+}
+.dk-th {
+  @apply px-3 py-2 text-left text-xs font-medium uppercase tracking-wider text-slate-500;
+}
+.dk-td {
+  @apply px-3 py-2.5 text-sm;
+}
+
+/* Light mode: ThemeProvider sets <html data-theme="light">. Only staff
+   surfaces flip (they live under .staff-dark); board kiosk stays dark. */
+[data-theme='light'] .staff-dark {
+  @apply bg-[#dde7da] text-[#122e1e];
+}
+[data-theme='light'] .staff-dark .dk-panel {
+  @apply border-[#0e4a3a]/10 bg-[#fdfbe7];
+}
+[data-theme='light'] .staff-dark .dk-input {
+  @apply border-slate-300 bg-white text-slate-900;
+}
+[data-theme='light'] .staff-dark .dk-input option {
+  background-color: #ffffff;
+}
+[data-theme='light'] .staff-dark .dk-btn-ghost {
+  @apply border-[#0e4a3a]/20 text-[#123524] hover:bg-[#cfe4d0]/50;
+}
+[data-theme='light'] .staff-dark .border-white\/5 {
+  border-color: rgba(14, 74, 58, 0.1);
+}
+[data-theme='light'] .staff-dark .border-white\/10 {
+  border-color: rgba(14, 74, 58, 0.15);
+}
+[data-theme='light'] .staff-dark .divide-white\/5 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgba(14, 74, 58, 0.1);
+}
+[data-theme='light'] .staff-dark .bg-white\/5,
+[data-theme='light'] .staff-dark .hover\:bg-white\/5:hover {
+  background-color: rgba(14, 74, 58, 0.07);
+}
+[data-theme='light'] .staff-dark .bg-black\/50 {
+  background-color: #cfe4d0;
+}
+[data-theme='light'] .staff-dark .text-slate-200 {
+  color: #122e1e;
+}
+[data-theme='light'] .staff-dark .text-slate-300 {
+  color: #1a3d2a;
+}
+[data-theme='light'] .staff-dark .text-slate-400 {
+  color: #4b6b58;
+}
+
+/* Login backdrop: mint/cream + green blobs + dots */
+.login-bg {
+  background:
+    radial-gradient(600px 600px at 8% 4%, rgba(78, 168, 149, 0.35), transparent 60%),
+    radial-gradient(700px 700px at 96% 96%, rgba(253, 251, 231, 0.9), transparent 60%),
+    linear-gradient(135deg, #dcecdb 0%, #cfe4d0 50%, #aecfb2 100%);
+}
+.login-dots {
+  background-image: radial-gradient(rgba(14, 74, 58, 0.35) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+.login-card-in {
+  animation: login-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes login-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.login-bg-dark {
+  background:
+    radial-gradient(600px 600px at 8% 4%, rgba(78, 168, 149, 0.22), transparent 60%),
+    radial-gradient(700px 700px at 96% 96%, rgba(20, 56, 42, 0.6), transparent 60%),
+    linear-gradient(135deg, #070c0a 0%, #0f2c22 55%, #081712 100%);
+}
+.login-form-dark .input {
+  background-color: #16281f;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+}
+.login-form-dark .input::placeholder {
+  color: #64748b;
+}
+.login-panel {
+  min-height: 320px;
+}
+
+/* ------------------------------------------------------------------
+   Responsive login background — fits desktop / tablet / mobile,
+   portrait + landscape, without stretching, cropping, or gaps.
+   - .login-shell: gradient-safe fallback color + dynamic viewport height
+     (100vh -> 100svh -> 100dvh) so iOS Safari / Chrome address bars
+     never leave gaps or cause jumps. Includes safe-area insets.
+   - .login-bg-layer: full-bleed base that always paints (no tiling).
+   - .login-bg-photo: the 1254px square DOH emblem rendered with
+     `contain` + vmin sizing, so the whole artwork (including the
+     "BAGONG PILIPINAS" text) stays visible and keeps its aspect ratio.
+     Width is capped below native resolution to avoid upscale
+     pixelation on large / retina screens; the vector gradient + wash
+     carry sharpness on 4K displays.
+   Works in Chrome / Safari / Firefox / Edge (object-fit + mask with
+   -webkit- prefix + @supports fallback).
+------------------------------------------------------------------- */
+.login-shell {
+  min-height: 100vh; /* legacy fallback */
+  min-height: 100svh; /* iOS 15.4+, small viewport (stable) */
+  min-height: 100dvh; /* modern dynamic viewport */
+  padding-left: max(0.75rem, env(safe-area-inset-left));
+  padding-right: max(0.75rem, env(safe-area-inset-right));
+  padding-top: max(1.5rem, env(safe-area-inset-top));
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+}
+.login-shell-light {
+  background-color: #dcecdb; /* matches wash start — no gap if img fails */
+}
+.login-shell-dark {
+  background-color: #070c0a;
+}
+.login-bg-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+.login-bg-wash {
+  position: absolute;
+  inset: 0;
+}
+.login-bg-photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(92vmin, 620px);
+  height: min(92vmin, 620px);
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  object-fit: contain;
+  object-position: center center;
+  font-family: 'object-fit: contain; object-position: center;'; /* IE/Edge legacy object-fit polyfill hint */
+  opacity: 0.16;
+  filter: saturate(1.05);
+  image-rendering: auto; /* crisp on retina, no pixelation smoothing artifacts */
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Feather the opaque black square edges into the gradient so no hard
+     box is visible on the mint/cream wash. -webkit- prefix = Safari. */
+  -webkit-mask-image: radial-gradient(circle at center, #000 56%, transparent 72%);
+  mask-image: radial-gradient(circle at center, #000 56%, transparent 72%);
+}
+.login-shell-dark .login-bg-photo {
+  opacity: 0.24;
+  mix-blend-mode: screen; /* drops the black plate out on dark pine */
+}
+
+/* Tablet: allow a larger watermark, still under native 1254px. */
+@media (min-width: 640px) {
+  .login-bg-photo {
+    width: min(88vmin, 760px);
+    height: min(88vmin, 760px);
+  }
+}
+/* Desktop / wide: cap render size so a 1080p-1440p canvas never upscales
+   past the 1254px source (prevents softness on large + retina screens). */
+@media (min-width: 1024px) {
+  .login-bg-photo {
+    width: min(86vmin, 960px);
+    height: min(86vmin, 960px);
+  }
+}
+/* Short landscape (phones rotated, small laptops): shrink + fade so the
+   card stays legible and the emblem never crowds the form. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .login-bg-photo {
+    width: min(72vh, 520px);
+    height: min(72vh, 520px);
+    opacity: 0.12;
+  }
+  .login-shell-dark .login-bg-photo {
+    opacity: 0.16;
+  }
+}
+/* Tall portrait phones: nudge emblem slightly up so bottom text is never
+   hidden behind the login card. */
+@media (orientation: portrait) and (max-width: 640px) {
+  .login-bg-photo {
+    top: 44%;
+    width: min(94vmin, 480px);
+    height: min(94vmin, 480px);
+  }
+}
+/* High-density (retina): keep vector-crisp rendering, never upscale art. */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .login-bg-photo {
+    image-rendering: auto;
+  }
+}
+/* Very large canvases (2560px+ / 4K): gradient carries the fill; the
+   watermark stays capped so it never pixelates. */
+@media (min-width: 1920px) {
+  .login-bg-photo {
+    width: min(70vmin, 1024px);
+    height: min(70vmin, 1024px);
+  }
+}
+/* Browsers without object-fit (IE11): fall back to a centered,
+   non-repeating background so there is no stretch or tiling. */
+@supports not (object-fit: contain) {
+  .login-bg-layer {
+    background-image: url('/background.jpg');
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .login-bg-photo {
+    display: none;
+  }
+}
+/* Reduced motion: no transform animation side-effects on the backdrop. */
+@media (prefers-reduced-motion: reduce) {
+  .login-bg-photo {
+    transform: translate(-50%, -50%);
+  }
+}
+@media print {
+  .login-bg-layer {
+    display: none;
+  }
+}
