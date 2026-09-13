@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getStaffClient, useStaffAuth } from './auth/staffAuth';
 import { useTheme } from '../../lib/theme';
+import PasswordInput from '../../components/PasswordInput';
 import type { Profile } from '../../lib/types';
 
 const ROLES = ['admin', 'receptionist', 'doctor', 'board'];
@@ -128,11 +129,25 @@ export default function Settings() {
           <h2 className="font-semibold">Change password</h2>
           <div>
             <label className="mb-1 block text-xs text-slate-500">New password (min 6 chars)</label>
-            <input className="dk-input" type="password" value={pw1} onChange={(e) => setPw1(e.target.value)} />
+            <PasswordInput
+              className="dk-input"
+              toggleClassName="text-slate-400 hover:text-slate-200"
+              value={pw1}
+              onChange={setPw1}
+              autoComplete="new-password"
+              required
+            />
           </div>
           <div>
             <label className="mb-1 block text-xs text-slate-500">Confirm password</label>
-            <input className="dk-input" type="password" value={pw2} onChange={(e) => setPw2(e.target.value)} />
+            <PasswordInput
+              className="dk-input"
+              toggleClassName="text-slate-400 hover:text-slate-200"
+              value={pw2}
+              onChange={setPw2}
+              autoComplete="new-password"
+              required
+            />
           </div>
           <button className="dk-btn-primary" type="submit">Change password</button>
         </form>

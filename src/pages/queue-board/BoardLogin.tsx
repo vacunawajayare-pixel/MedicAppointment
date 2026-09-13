@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useBoardAuth } from './auth/boardAuth';
 import LoginShell, { LoginOptionsRow } from '../../components/LoginShell';
+import PasswordInput from '../../components/PasswordInput';
 
 // Logic below is unchanged: board-only sign-in, navigate to display.
 export default function BoardLogin() {
@@ -53,12 +54,11 @@ export default function BoardLogin() {
         </div>
         <div>
           <label className="mb-1 block text-xs font-medium text-slate-600">Password</label>
-          <input
+          <PasswordInput
             className="w-full rounded-lg border-[1.5px] border-[#0f3d2e]/80 bg-white px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#4ea895]"
-            type="password"
-            placeholder="••••••"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={setPassword}
+            autoComplete="current-password"
             required
           />
         </div>
