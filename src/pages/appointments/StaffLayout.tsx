@@ -89,7 +89,10 @@ export default function StaffLayout() {
   );
 
   return (
-    <div className="staff-dark flex min-h-screen">
+    // Fixed viewport-height shell: the page itself never scrolls. The sidebar
+    // stays pinned at full height while <main> below owns the only scroll
+    // container. dvh (with vh fallback) keeps mobile browser chrome correct.
+    <div className="staff-dark flex h-screen overflow-hidden supports-[height:100dvh]:h-[100dvh]">
       {/* Mobile top bar with hamburger (drawer trigger) */}
       <header className="fixed inset-x-0 top-0 z-30 flex items-center gap-2 border-b border-white/5 bg-black/70 px-3 py-2 backdrop-blur md:hidden">
         <button
@@ -107,10 +110,11 @@ export default function StaffLayout() {
         {activePage && <span className="ml-1 text-xs text-slate-400">· {activePage}</span>}
       </header>
 
-      {/* Desktop sidebar: expanded (icon + text) / collapsed (icon only) */}
+      {/* Desktop sidebar: pinned full-height, never scrolls with content.
+          Expanded (icon + text) / collapsed (icon only). */}
       <aside
         id="staff-sidebar"
-        className={`sticky top-0 hidden h-screen shrink-0 flex-col border-r border-white/5 bg-black/50 p-3 transition-[width] duration-200 ease-in-out md:flex ${
+        className={`hidden h-full shrink-0 flex-col border-r border-white/5 bg-black/50 p-3 transition-[width] duration-200 ease-in-out md:flex ${
           collapsed ? 'md:w-[76px]' : 'md:w-52 md:p-4'
         }`}
       >
@@ -214,8 +218,11 @@ export default function StaffLayout() {
         </div>
       </aside>
 
-      <main className="mx-auto w-full max-w-6xl flex-1 p-4 pt-16 md:p-6 md:pt-6">
-        <Outlet />
+      {/* Main content owns the only scroll container — sidebar stays put. */}
+      <main className="min-h-0 min-w-0 flex-1 overflow-y-auto p-4 pt-16 md:p-6 md:pt-6">
+        <div className="mx-auto w-full max-w-6xl">
+          <Outlet />
+        </div>
       </main>
     </div>
   );
